@@ -6,13 +6,6 @@ namespace Test.Tests
 {
     public class ChangeTextToUpperTests
     {
-        private  UpperCaseTestFixture _fixture;
-
-        public ChangeTextToUpperTests()
-        {
-            _fixture = new UpperCaseTestFixture();
-        }
-
         [Theory]
         [InlineData("test1")]
         [InlineData("test2")]
@@ -23,12 +16,19 @@ namespace Test.Tests
             _fixture.SetTextToChange("test");
 
             // Act
-            var result = Execute();
+            var result = Act();
             
             // Assert
             _fixture.assert_text_are_upper_case(result);
         }
 
-        private string Execute() => _fixture.Execute();
+        private string Act() => _fixture.Act();
+
+        private UpperCaseTestFixture _fixture;
+
+        public ChangeTextToUpperTests()
+        {
+            _fixture = new UpperCaseTestFixture();
+        }
     }
 }
